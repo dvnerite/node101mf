@@ -1,3 +1,4 @@
+require('dotenv').config();
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const axios = require('axios');
@@ -29,17 +30,17 @@ function withMovie(i) {
 
 
 mock
-  .onGet('http://www.omdbapi.com', { params: { i: 'tt3896198', apiKey: '8730e0e' }})
+  .onGet('http://www.omdbapi.com',{params:{i:'tt3896198',apiKey:'8730e0e'}})
   .replyOnce(withMovie(0))
-	.onGet('http://www.omdbapi.com/', { params: { i: 'tt3896198', apiKey: '8730e0e' }})
+	.onGet('http://www.omdbapi.com/',{params:{i:'tt3896198',apiKey:'8730e0e'}})
   .replyOnce(withMovie(0))
   .onGet('http://www.omdbapi.com/?i=tt3896198&apikey=8730e0e')
   .replyOnce(withMovie(0))
   .onGet('http://www.omdbapi.com/?apikey=8730e0e&i=tt3896198')
   .replyOnce(withMovie(0))
-  .onGet('http://www.omdbapi.com', { params: { t: 'baby driver', apiKey: '8730e0e' }})
+  .onGet('http://www.omdbapi.com',{params:{ t: 'baby driver', apiKey:'8730e0e'}})
   .replyOnce(withMovie(1))
-  .onGet('http://www.omdbapi.com/', { params: { t: 'baby driver', apiKey: '8730e0e' }})
+  .onGet('http://www.omdbapi.com/',{params:{ t: 'baby driver', apiKey:'8730e0e'}})
   .replyOnce(withMovie(1))
   .onGet('http://www.omdbapi.com/?t=baby%20driver&apikey=8730e0e')
   .replyOnce(withMovie(1))
